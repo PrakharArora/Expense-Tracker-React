@@ -1,32 +1,33 @@
+import React , {useState} from "react";
 import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import './Expenses.css';
+import ExpensesFilter from "./ExpensesFilter";
 
 const Expenses = (props) => {
+      const [filteredYear , setFilteredYear] = useState('2020');
+// Storing the Default Value for the Filter 
+  const filterChangeHandler = selectedYear =>{
+
+      setFilteredYear(selectedYear);
+  }    
 
     return (
+      <div>
+           
         <Card className="expenses">
-
-        <ExpenseItem title={props.items[0].title} 
-        amount={props.items[0].amount} 
-        Date={props.items[0].Date}>
-  </ExpenseItem>
-
-  <ExpenseItem title={props.items[1].title} 
-        amount={props.items[1].amount} 
-        Date={props.items[1].Date}>
-  </ExpenseItem>
-
-  <ExpenseItem title={props.items[2].title} 
-        amount={props.items[2].amount} 
-        Date={props.items[2].Date}>
-  </ExpenseItem>
-
-  <ExpenseItem title={props.items[3].title} 
-        amount={props.items[3].amount} 
-        Date={props.items[3].Date}>
-  </ExpenseItem>
+        <ExpensesFilter selected={filteredYear}  onChangeFilter={filterChangeHandler} />
+        {props.items.map((expense)=>(
+            <ExpenseItem
+            title={expense.title}
+            amount={expense.amount}
+            Date = {expense.Date}
+            />
+        ))}
+  
   </Card>
+  </div>
+
     )
 }
 

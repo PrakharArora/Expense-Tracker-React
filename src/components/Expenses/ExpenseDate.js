@@ -3,15 +3,15 @@ import './ExpenseDate.css';
 
 const  ExpenseDate = (props) =>{
 
-    const month = props.Date.toLocaleString('en-US' ,  {month: 'long'});
-    const Day = props.Date.toLocaleString('en-US' , {Day: '2-digit'});
-    const Year = props.Date.getFullYear();
+    const month = props.date?.toLocaleString("en-US", { month: "long" });
+  const day = props.date?.toLocaleString("en-US", { day: "2-digit" });
+  const year = props.date?.getFullYear();
 
     return (
         <div className="expense-date">
         <div className="expense-date__month">{month}</div>
-        <div className="expense-date__year">{Year}</div>
-        <div className="expense-date__day">{Day}</div>
+        <div className="expense-date__year">{year}</div>
+        <div className="expense-date__day">{day}</div>
         </div>
     );
 
